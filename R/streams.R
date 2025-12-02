@@ -75,11 +75,21 @@ add_stream <- function(df, name="default", start=0, end=NA, maxpoints=1e9, filte
     df %>% pivot_wider_streams -> df
   
   # add stream.str and pivot to long format
-  df %>% 
+  df <-
+   df %>% 
     tibble::rowid_to_column() %>% 
     add_stream_({{name}}, start=start, end=end, maxpoints=maxpoints, filter_fun=filter_fun, filter_fun2 = filter_fun2, check_name = check_name) %>% 
     pivot_longer_streams() %>% 
-    arrange(rowid) %>% select(-rowid)
+    arrange(rowid) %>% select(-rowid) 
+  
+  if(! length(unique(df$stream))==1 ){
+   df <-
+     df %>% mutate(id=paste(id,stream))  
+  }
+  
+  df
+  
+  
 }
 
 
