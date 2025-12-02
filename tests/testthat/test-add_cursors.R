@@ -168,16 +168,37 @@ test_that("if we add stream before using cursors, everything is ok ", {
   
 })
 
-test_that("cursor_points works without error", {
-  skip("fixme: cursor_points is currently broken")
-  # reactivate the example when fiexed!
+
+test_that("simple cursor_points works without error", {
+  
+ 
   expect_no_error({
     examplefile = file.path(ephysdata::get_examples_path(), "cardiopatch/21-07-Cardio.dat")
     read_PATCHMASTER(examplefile,exp=23, ser=3,  trc="Vmon") %>% filter(serlabel=="CC0") %>%
-      add_cursor_points("starts", fun=min, direction = "below", long = TRUE) %>%
-      mutate(ends.x=lead(starts.x), .after=starts.x) %>% slice(1:6) %>%
-      add_cursor("min", start=starts.x, end=ends.x, cfun = min) %>%
-      ggsweeps(maxpoints = 1e12) + xlim(0,6)+
+      add_cursor_points("starts", fun=min, direction = "below") %>%
+      ggsweeps(maxpoints = 1e12) + xlim(0,16)+
+      ylab("mV") +
+      cowplot::theme_cowplot(12)
+  }
+  
+  )
+  
+})
+
+
+test_that("advanced cursor_points works without error", {
+  expect_no_error({
+    examplefile = file.path(ephysdata::get_examples_path(), "cardiopatch/21-07-Cardio.dat")
+    
+ 
+    read_PATCHMASTER(examplefile,exp=23, ser=3,  trc="Vmon") %>% filter(serlabel=="CC0") %>%
+      add_cursor_points("starts", start = 1,end=15,fun=min, direction = "below", long = TRUE) %>%
+      mutate(ends.x=lead(starts.x), .after=starts.x)  %>%
+      add_cursor_point("min", start=starts.x, end=ends.x, fun =  max) -> X;X %>%
+      
+    
+    
+    ggsweeps(maxpoints = 1e12) + xlim(0,16)+
       ylab("mV") +
       cowplot::theme_cowplot(12)
   }
@@ -185,7 +206,6 @@ test_that("cursor_points works without error", {
   )
   
 })
-
 
 
 

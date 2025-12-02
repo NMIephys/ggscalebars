@@ -63,15 +63,29 @@ ggsweeps<-function(df,start=NA, end=NA, filter_fun=unfiltered, filter_fun2=unfil
         
         }
       
+    
    
-      TRACES <- 
-        left_join(df, df %>% tidyr::unnest(data) %>% group_by(id) )
+      
+      # we try to not duplicate trace data even if we have multiple rows with different cursor 
+      # annotations. (see tests for add_cursor_points(long=TRUE) how we could get into such a situation). 
+      # if we have such duplicated rows, this brings an enourmous performance boost.
       
       
+      # first we get all columns that do not vary for the same id - the trace data is among them. 
+      nonvarying_cols <- df %>% 
+        group_by(id) %>% 
+        summarise(across(everything(), ~ n_distinct(.x))) %>% 
+        select(where(~ all(.x == 1))) %>% 
+        names()
       
-      attr(TRACES, "meta") <- df #%>% select(-ptrs, -data)
+      # now, we can distinct all the trace data, and also keep the nonvarying cols, in case we want to use them for trace coloring etc. 
+      TRACES <-
+        df %>% select(id, any_of(nonvarying_cols), data) %>% distinct()%>% unnest(data) %>% group_by(id)
       
-      
+     
+    
+      # we add the varying cols as "meta" attribute so that we can use them to plot cursor results
+      attr(TRACES, "meta") <- df %>% select(-data)
     
              p <- 
                TRACES %>% 
@@ -84,11 +98,10 @@ ggsweeps<-function(df,start=NA, end=NA, filter_fun=unfiltered, filter_fun2=unfil
                geom_line(..., na.rm=T)+ 
                
                xlab("seconds") + 
-               ylab(get_yunit(df))+
-               
+               ylab(get_yunit(df))+               
                geoms_cursor_annotations(df)
              
-       
+      
           
           p <- add_bars(p, df, TRACES,topspace, bottomspace, height, space, bar.colors)
           
@@ -99,16 +112,17 @@ ggsweeps<-function(df,start=NA, end=NA, filter_fun=unfiltered, filter_fun2=unfil
 
 geoms_cursor_annotations <- function(df){
   cnames <- df %>% select(contains("csr")) %>%  names
-  cnames %>% purrr::map(get_annots, data=df)
+  cnames %>% purrr::map(get_annots, df)
 }
 
 add_bars<-function(p, df, TRACES,topspace, bottomspace, height, space, bar.colors){
   if( (df %>% select(contains(".bar")) %>% NCOL) > 0 ){
     
+    df <- df %>% select(contains(".bar"), swp, xoffset, yoffset, id)
     
     p<- 
       p + 
-      auto_bars(space = space, topspace = topspace, height = height, colors = bar.colors) + 
+      auto_bars(df, space = space, topspace = topspace, height = height, colors = bar.colors) + 
       geom_blank(
         aes(x_=NULL, y=y_), 
         data= get_geom_blank_limits(df, TRACES, bottomspace,topspace, height, space), 
@@ -189,6 +203,7 @@ get_annots<-function(csrname, data, level){
   csr_basename = stringr::str_remove(csrname, ".csr")
   if(isTRUE(getOption("ephys4.cursor_annots_not_from_attr"))){
     fun = data[[csrname]][[1]]$annotation[[1]]
+   
   }else{
     
     #the old style
@@ -197,7 +212,7 @@ get_annots<-function(csrname, data, level){
   
   
   if(!is.null(fun)) fun(csr_basename) 
-  
+  # this will call a function like e.g. point_.annot (typically defined in cursor_annotations.R)
   
 }
 

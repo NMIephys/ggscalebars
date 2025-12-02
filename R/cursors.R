@@ -164,7 +164,7 @@ attr(AP_, "annot") <- geom_cursor_AP_
 #' @describeIn cursors
 #' add a bar
 #' @export
-bar_<-function(data, start, end, line, fixed.y, sweeps, label,bar.mapping, fill, border, label.col, label.size, hjust, vjust, label.x, label.sweeps, annot=bar_.annot){
+bar_<-function(data, start, end, line, fixed.y, sweeps, label,bar.mapping, fill, border, label.col, label.size, hjust, vjust, label.x, label.sweeps, annot=bar_.annot,...){
   
   st=start
   en=end
@@ -215,7 +215,7 @@ attr(model_, "annot") <- model_.annot
 #' @describeIn cursors
 #' multiple peaks above a threshold
 #' @export
-peaks_multy_<-function(data, fun=max, start, end, th_fun=mean,  direction=c("above", "below"), min_chunksamples=1, start_plus=0, end_minus=0, annot=peaks_multy_.annot  ){
+peaks_multy_<-function(data, fun=max, start, end, th_fun=mean,  direction=c("above", "below"), min_chunksamples=1, start_plus=0, end_minus=0, annot=peaks_multy_.annot,...  ){
   
   th=th_fun(data$y)
   peaks=threshold_evaluator(data$x, data$y, threshold =th,eval_fun = fun, direction = direction, min_chunksamples = min_chunksamples, start_plus=start_plus, end_minus=end_minus)

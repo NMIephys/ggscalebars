@@ -156,7 +156,11 @@ add_cursor_points<-function(ephysdata, name, start=0, end=NA,  fun, long=FALSE, 
     xname=paste0(name, ".x")
     yname=paste0(name, ".y")
       ephysdata %>% 
-      tidyr::hoist(!!csrname, !!xname:="x", !!yname:="y") %>% tidyr::unnest(cols = c(!!xname, !!yname))
+      tidyr::hoist(
+        !!csrname,
+        !!xname:="x",
+        !!yname:="y", .remove = FALSE) %>%
+          tidyr::unnest(cols = c(!!xname, !!yname)) #%>% select(-csrname)
   }else{
     ephysdata
   }

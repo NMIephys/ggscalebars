@@ -47,7 +47,7 @@ get_xBars <- function(df, space=.035, height=.03, topspace=space){
 
 
 # this does not calculate anything, called from inside ggsweeps
-auto_bars <- function(space=.01, height=.05, topspace=space, show.legend=FALSE, colors="grey85"){
+auto_bars <- function(df, space=.01, height=.05, topspace=space, show.legend=FALSE, colors="grey85"){
   
   list(
     geom_rect..(#..version
@@ -60,7 +60,7 @@ auto_bars <- function(space=.01, height=.05, topspace=space, show.legend=FALSE, 
                    fill2=fill
                    ), 
                    show.legend=show.legend,
-               data= . %>% attr("meta") %>% get_xBars( space=space, height = height, topspace=topspace) 
+               data= df %>% get_xBars( space=space, height = height, topspace=topspace) 
     ) ,  
     geom_text.(aes(
                    x.= unlist(label.x), 
@@ -75,7 +75,7 @@ auto_bars <- function(space=.01, height=.05, topspace=space, show.legend=FALSE, 
                    # if we would switch to draw bars in the coord we could use theme elements
                    # sounds like the best option...
                    #color=getOption("ephys4.bars.label.color"),  
-               data= . %>% attr("meta") %>% get_xBars( space=space, height = height, topspace=topspace) 
+               data= df %>% get_xBars( space=space, height = height, topspace=topspace) 
 
     ),
     scale_fill_brewer() # replaces the default scale_fill_discrete, to avoid error "Must request at least one colour from a hue palette"
