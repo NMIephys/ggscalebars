@@ -39,8 +39,8 @@ geom_topbar_<-function(
              label.position=c("center", "above", "below", "left", "right"),
              fill = "grey",
              border = {{fill}},
-             label.col = fill,
-             label.size=10,
+             label.col = "black",
+             label.size=5,
              get_data=unfiltered,
              hjust = label.hjust(label.position),
              vjust = label.vjust(label.position),
@@ -54,21 +54,21 @@ geom_topbar_<-function(
                 ymax=I(1-style$height*(line-1)-style$space*(line-1)-style$topspace),
                 data=. %>% get_data %>% filter({{filter_expr}}) %>%
                   head(1), # prevents overplotting multiple times
-                fill=fill, size=1,
+                fill=fill, linewidth=1,
                 color=border
                 ),
     geom_text(x=label.x,
                y=label.y, na.rm=T,
-               label=label, label.col=label.col, label.size=label.size, vjust=vjust,hjust=hjust, show.legend=F,
+               label=label, color=label.col, size=label.size, vjust=vjust,hjust=hjust, show.legend=F,
                data=. %>% get_data %>% filter({{filter_expr}}) %>%
                  head(1) # prevents overplotting multiple times
                #data=NULL
                ),
-    geom_segment(x=start, xend=line_to.x, y=label.y, yend=line_to.y, color=line_to.color, size=line_to.size, arrow=line_to.arrow, linetype=line_to.linetype,na.rm=T,
+    geom_segment(x=start, xend=line_to.x, y=label.y, yend=line_to.y, color=line_to.color, linewidth=line_to.size, arrow=line_to.arrow, linetype=line_to.linetype,na.rm=T,
                   data=. %>% get_data %>% filter({{filter_expr}}) %>% 
                     head(1)),
     
-    geom_segment(x=end, xend=line_to.x2, y=label.y, yend=line_to.y2, color=line_to.color, size=line_to.size, arrow=line_to.arrow, linetype=line_to.linetype,na.rm=T,
+    geom_segment(x=end, xend=line_to.x2, y=label.y, yend=line_to.y2, color=line_to.color, linewidth=line_to.size, arrow=line_to.arrow, linetype=line_to.linetype,na.rm=T,
                   data=. %>% get_data %>% filter({{filter_expr}}) %>% 
                     head(1)),
     geom_blank(

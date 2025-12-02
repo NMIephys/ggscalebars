@@ -28,7 +28,7 @@ theme_scalebars<-function(size=12,
 
   theme_bw() +
     theme(panel.border=element_blank(),
-          axis.line=element_line(size=lwd, lineend = "square"),
+          axis.line=element_line(linewidth=lwd, lineend = "square"),
           #axis.ticks = element_blank(),
           axis.title = element_blank(),
           panel.grid = element_blank(),
@@ -57,7 +57,7 @@ theme_scalebar_h<-function(size=12,
 
 
     theme(#panel.border=element_blank(),
-          axis.line.x = element_line(size=lwd, lineend = "square"),
+          axis.line.x = element_line(linewidth=lwd, lineend = "square"),
           #axis.ticks.x = element_blank(),
           axis.title.x = element_blank(),
           axis.text.x = element_text(vjust=x.vjust, size=size),
@@ -84,7 +84,7 @@ theme_scalebar_v<-function(size=12,
   
   
   theme(#panel.border=element_blank(),
-    axis.line.y = element_line(size=lwd, lineend = "square"),
+    axis.line.y = element_line(linewidth=lwd, lineend = "square"),
     #axis.ticks.y = element_blank(),
     axis.title.y = element_blank(),
     axis.text.y = element_text(angle = 90, size=size, hjust=0.5, vjust=y.vjust),

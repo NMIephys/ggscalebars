@@ -195,9 +195,9 @@ coord_scalebars <- function (
 
 
             if(is.na(xlength)){
-              print(xrange_)
+              #print(xrange_)
               xlength <- auto_bar.length(xrange_*xfactor)/xfactor
-              print(xlength)
+              #print(xlength)
             }
             if(is.na(xlabel)){
               xlabel <- stringr::str_trim(paste(xlength*xfactor, xunit))

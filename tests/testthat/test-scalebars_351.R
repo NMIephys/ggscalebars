@@ -1,5 +1,5 @@
 test_that("scalebars work on ggplot >3.5.0", {
-  skip("scalebars in ggplot 3.5.x still throw some warnings")
+  
   expect_no_error(
     {
       # the new ggplot 2.3.5 offers all we need to draw scalebars and topbars
