@@ -306,6 +306,4 @@ auto_bar.length <- function(range){
   round(diff(pretty(range, n = 7)[1:2]),2)
 } 
 
-"%|W|%" <- function(a, b) {
-  if (!ggplot2:::is.waive(a)) a else b
-}
+

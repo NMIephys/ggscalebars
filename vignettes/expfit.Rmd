@@ -1,5 +1,5 @@
 ---
-title: "expfit"
+title: "How to do exponential fits"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{expfit}
@@ -16,27 +16,33 @@ knitr::opts_chunk$set(
 
 ```{r setup, echo=FALSE}
 suppressMessages(library(ephys4))
+theme_set( cowplot::theme_cowplot() )
 ```
 
 
 ```{r}
-read_PATCHMASTER(ephysdata::examplefile("NaV"), ser=2) %>% tail(1) -> testdata
+testdata <-
+   read_PATCHMASTER(ephysdata::examplefile("NaV"), ser=2) %>% tail(1) 
 
 testdata %>% ggsweeps()
 ```
 
 
 ```{r}
+EXPFIT <-
+  testdata %>%
+    add_cursor_expfit("expfit", 
+                      start= 0.011, 
+                      end = 0.03
+                      ) 
 
-
-testdata %>%
- add_cursor_expfit("expfit", 0.011, 0.03, annot=annot_range_model(range.color="skyblue", range.fill=alpha("skyblue", .1), line.color = "blue", line.width = 2)) -> EXPFIT
-
-EXPFIT%>% ggsweeps() + cowplot::theme_cowplot()
+EXPFIT %>% ggsweeps() 
 
 ```
 
 ```{r}
-EXPFIT %>% select(expfit) %>% tidyr::unnest_wider(expfit, names_sep = "~")
+EXPFIT %>% 
+  select(expfit) %>% 
+  tidyr::unnest_wider(expfit, names_sep = "~")
 ```
 

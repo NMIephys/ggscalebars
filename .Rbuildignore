@@ -6,6 +6,16 @@
 ^\.Rprofile$
 
 ^doc$
+^docs$
+^pkgdown$
 ^Meta$
 ^README\.Rmd$
 ^TODO$
+
+build.R
+_pkgdown.yml
+
+
+(^|/)cache_patchmaster($|/)
+(^|/)cache_robotraces($|/)
+(^|/)_snaps($|/)

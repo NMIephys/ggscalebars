@@ -14,6 +14,7 @@
 #' @param ... aditional parameters passed to cfun
 #' @param start start value
 #' @param end end value
+#' @param condition optional: a logical expression evaluated in the context of the input data. Only for rows where the expression evaluates to TRUE the cursor will be calculated.  
 #' @param stream optional: select stream for the cursor to operate on. See add_stream. 
 #' @param auto_hoist a list of the form list(resultname = "x") specifying cursor results to be hoisted
 #' @param .transform a list of the form list(resultname = fun) specifying how cursor results are to be transformed. Defaults to use the defaults of the cfun.  

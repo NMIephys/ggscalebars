@@ -80,7 +80,7 @@ ggsweeps<-function(df,start=NA, end=NA, filter_fun=unfiltered, filter_fun2=unfil
       
       # now, we can distinct all the trace data, and also keep the nonvarying cols, in case we want to use them for trace coloring etc. 
       TRACES <-
-        df %>% select(id, any_of(nonvarying_cols), data) %>% distinct()%>% unnest(data) %>% group_by(id)
+        df %>% select(id, any_of(nonvarying_cols), data) %>% distinct()%>% tidyr::unnest(data) %>% group_by(id)
       
      
     

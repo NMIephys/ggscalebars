@@ -1,8 +1,8 @@
 Package: ephys4
 Type: Package
 Title: Read, analyze and plot HEKA Patchmaster files
-Version: 4.0.0
-Date: 2022-09-29
+Version: 4.0.1
+Date: 2025-12-03
 Author: Timm Danker
 Maintainer: Timm Danker <timm.danker@nmi.de>
 Description: Patchmaster raw data files can be read directly and visualized using ggplot.  
@@ -25,7 +25,12 @@ Imports:
     tibble,
     glue, 
     units,
-    lifecycle
+    lifecycle,
+    cli, 
+    gridBase, 
+    scales, 
+    xfun, 
+    yesno
 Suggests:
     knitr,
     testthat (>= 3.0.0),

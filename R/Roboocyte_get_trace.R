@@ -86,7 +86,7 @@ get.ROBOOCYTE_ <- function(file, RecordingID, start=0, end=NA, rerun=F,  ...) {
       trace <- readr::read_delim(export_traces_file, 
                                  "\t", 
                                  col_types = readr::cols(.default = "d"),
-                                 col_select = tidyselect::ends_with(paste0("-", RecordingID)), 
+                                 col_select = ends_with(paste0("-", RecordingID)), 
                                  escape_double = FALSE, 
                                  na=c("", "N/A", "NA"), 
                                  trim_ws = TRUE ,
