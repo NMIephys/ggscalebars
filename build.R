@@ -26,12 +26,12 @@ git2r::commit(drat_repo,  stringr::str_remove(basename(BINARY), ".zip") )
 
 
 # if connected to NMI-intranet:
-git2r::pull(drat_repo)
-git2r::push(drat_repo)
+#git2r::pull(drat_repo)
+#git2r::push(drat_repo)
 
-R_REPO <- git2r::repository("I://PharmaBiotech/1033_Ephys/R_PACKAGES/")
-git2r::pull(R_REPO)
-git2r::push(R_REPO)
+#R_REPO <- git2r::repository("I://PharmaBiotech/1033_Ephys/R_PACKAGES/")
+#git2r::pull(R_REPO)
+#git2r::push(R_REPO)
 
 available.packages(repos="file:///I:/PharmaBiotech/1033_Ephys/R_PACKAGES/")[,1:3]
 

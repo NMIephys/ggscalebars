@@ -2,7 +2,7 @@
 title: "How to do exponential fits"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{expfit}
+  %\VignetteIndexEntry{How to do exponential fits}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
