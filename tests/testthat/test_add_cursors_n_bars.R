@@ -51,20 +51,20 @@ cursor_bar_hama <-
 
 test_that("add_cursors and add_bars just works (json2)", {
   
-  skip("expect_snapshot_value fails now")
-  expect_snapshot_value( style="json2", ignore_attr = TRUE, {
+  
+  expect_snapshot_value( style="json2", ignore_attr = TRUE, ignore_function_env=TRUE, {
     cursor_bar_robo 
   })
   
   
   
-  expect_snapshot_value( style="json2", ignore_attr = TRUE, {
+  expect_snapshot_value( style="json2", ignore_attr = TRUE, ignore_function_env=TRUE, {
     cursor_bar_heka 
   })
   
   
   
-  expect_snapshot_value( style="json2", ignore_attr = TRUE, {
+  expect_snapshot_value( style="json2", ignore_attr = TRUE, ignore_function_env=TRUE, {
     cursor_bar_hama 
   })
   
