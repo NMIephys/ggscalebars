@@ -34,7 +34,7 @@ test_that("read_traces gets the same traces from Roboo data regardless of readin
   expect_lt(trace_diff, 0.06)
   expect_lt(trace_diff/trace_span, 0.001)
   
-  #skip("Fixme: ggsweeps does not work here yet, skipping test")
+ 
   vdiffr::expect_doppelganger("test_read_Exported_Traces", all_there %>% head(3) %>% ggsweeps())
   vdiffr::expect_doppelganger("test_read_raw_Traces", all_there_but_raw %>% head(3) %>% ggsweeps())
 })
