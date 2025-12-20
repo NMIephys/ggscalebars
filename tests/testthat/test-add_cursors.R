@@ -59,38 +59,9 @@ test_that("we can use streams with cursors",{
   
 })
 
-test_that("we can use default-stream 'data' with cursors without naming it",{
-  testthat::skip(message = "this works but we want to simplyfy it in add_cursor")
-  # here, we create a custom stream and then use it with the cursor. 
-  expect_no_error({
-    stop("this works but we want to simplyfy it in add_cursor")
-    heka      %>% slice(c(4,6)) %>%
-      add_stream() %>% 
-      add_cursor(name = "peak",start=0.007, end=0.02,cfun = point_, fun=min) %>% 
-      unnest(data) %>%
-      ggplot(aes(x,y, group=id)) + geom_cursor_range_("peak") + geom_line() + geom_cursor_point_("peak", color="red") 
-  })
-  
-})
 
 
-# test_that("cursor from stream gets the same result", {
-#   #this wont work at the moment since we require to have a stream now. 
-# heka %>% add_stream() -> heka_str
-# csr_fun=function(y){
-#   min(y, na.rm=TRUE)
-# }
-#   expect_no_error(
-#     bench::mark( check=TRUE,filter_gc = FALSE,
-#                  heka_str  %>% add_cursor_point("peak", 0.02, 0.22, csr_fun) %>% select(peak)
-#                  ,
-#                  heka      %>% add_cursor_point("peak", 0.02, 0.22, csr_fun)%>% select(peak)
-#     ) 
-#   )
-# })
-
-
-test_that("curosr annots look the same, coming from attribute or cursor resultlist ", {
+test_that("cursor annots look the same, coming from attribute or cursor resultlist ", {
   expect_no_error(
     {
       library(patchwork)
