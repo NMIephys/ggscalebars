@@ -1,6 +1,6 @@
 read_ROBOO_r2d<-function(file, cache_rerun=F){
   xfun::cache_rds( # this is not about reading the traces, but the wellinfo. So this makes sense?
-    dir = getOption("cache_robotraces", default ="cache_robotraces/"), rerun = cache_rerun, 
+    dir = getOption("cache_robotraces", default =here::here("tmp/cache_robotraces//")), rerun = cache_rerun, 
     hash = list(file, file.size(file)), 
     clean = F,
     file="RTrawTable",

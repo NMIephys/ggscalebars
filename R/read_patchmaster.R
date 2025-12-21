@@ -19,7 +19,8 @@ read_PATCHMASTER<-function(file, exp=NA, ser=NA, swp=NA, trc="Imon-1|Imon1|I-mon
                            # option to actually read only the specified experiment, to see the effect:  (works as expected)
                            prefilter_exp_ser=F){
   xfun::cache_rds(  # this caching seems to make sense (confirmed by benchmarking)
-    dir = "cache_patchmaster/", rerun = cache_rerun, 
+    dir = getOption("cache_patchmaster", default =here::here("tmp/cache_patchmaster//")), 
+    rerun = cache_rerun, 
     hash = list(file, file.size(file), exp, ser, swp, trc), 
     clean = F,
     file="readPM_",

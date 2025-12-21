@@ -36,6 +36,7 @@ analyse_ROBOO_cached<-function(platefile, analysis_function = \(x)x, clean_ana=F
     clean=TRUE,  
     rerun = rerun, 
     dir="cache_datafiles/", 
+    dir = getOption("cache_datafiles", default =here::here("tmp/cache_datafiles//")), rerun = rerun, 
     hash= list(file.info(platefile)$mtime), 
     read_ROBOO(platefile) 
   )
@@ -45,6 +46,7 @@ analyse_ROBOO_cached<-function(platefile, analysis_function = \(x)x, clean_ana=F
     clean=clean_ana, 
     rerun = rerun,
     dir="cache_analysis/", 
+    dir = getOption("cache_analysis", default =here::here("tmp/cache_analysis//")), rerun = rerun, 
     hash= list(file.info(platefile)$mtime, deparse(body(analysis_function))), 
     file_read %>% analysis_function
   )

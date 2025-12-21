@@ -2,7 +2,7 @@
 get.Patchmaster_cached<-function(file, trc., swp., start=0, end=NA, rerun=F,  ...){
   
   trace_ = xfun::cache_rds(  # this chaching is only making things worse. use get.Patchmaster_noCache for better performance without caching.
-    dir = getOption("cache_HEKAtraces", default ="cache_HEKAtraces/"), rerun = rerun, 
+    dir = getOption("cache_HEKAtraces", default =here::here("tmp/cache_HEKAtraces//")), rerun = rerun, 
     hash = list(file, trc., swp.,  start, end), 
     clean = F,
     file="HEKAraw",

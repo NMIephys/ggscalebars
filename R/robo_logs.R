@@ -558,7 +558,7 @@ xtract_pattern<-function(loglines, p, which=1){
 get_streamed_cached<-function(plate, run, selection=TRUE, fifun=unfiltered, fifun2=unfiltered, HDIFF=1, rerun=F){
     
   xfun::cache_rds(file="cached_stream", # this cache is used by "add_r2d". Is this working good? what about interference with the other caches ? 
-                  dir = getOption("cache_robotraces", default = "cache/"),
+                  dir = getOption("cache_robotraces", default =here::here("tmp/cache_robotraces//")),
                   hash = list(plate, run, HDIFF, deparse(body(fifun)), deparse(body(fifun2))), clean = F, rerun = rerun,
                   {
                     
