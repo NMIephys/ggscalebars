@@ -1,3 +1,5 @@
+#' a filter function that does nothing
+#'
 #' @export
 unfiltered<-function(x)x
 

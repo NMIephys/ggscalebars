@@ -89,9 +89,29 @@ WellID<-function(WellCode){
   (which(LETTERS==LETTER)-1) * 12 + as.numeric(NUMBER)
 }
 
-
-
+#' get recording infos from rpf file
+#'
+#' recording infos contain valuable information 
+#' 
+#'        
+#' "ScriptFileName"          "IsIVCurve"               "IVCurveID"               "IVProtocolName"         
+#'"LeakSubtractionInfo"     "base.right"              "base.left"               ".right"                  ".left"                  
+#' "ROIs"                    "Recinfo"                 "Injected"                "InjectionDate"           "InjectionType"          
+#' "SampleID"                "UserID"                  "Name"                    "Type"                    "Concentration"          
+#'  "VolumeInTube"            "TestInjection"           "Comment"                 "MountImpalementPos"      "MountImpalementVelocity"
+#' "WaitAfterImpalement"     "MountInjectionPos"       "MountInjectionVelocity"  "InjectVolume"            "InjectVelocity"         
+#'  "InjectPrePause"          "InjectPostPause"         "well"                   
+#' 
+#' @param rpf_file rpf-file to read from
+#'
 #' @export
+#' @examples
+#' get_recordinginfos(ephysdata::examplefile("OO_rpf")) %>% inner_join(read_ROBOO(ephysdata::examplefile("OO_r2d")) ) %>% head(6) ->DATA 
+#'
+#' DATA %>%  
+#'  tidyr::unnest(Recinfo) %>%
+#'  ggsweeps(mapping=aes(x,y,color=rcinfo.Valve)) + facet_wrap(~well)
+#' 
 get_recordinginfos<-function(rpf_file){
   assert_robo_not_running()
   rpf<- xml2::read_xml(rpf_file) %>% xml2::as_list()

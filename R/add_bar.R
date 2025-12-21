@@ -17,8 +17,8 @@
 #' @param label.size label size of the bar  
 #' @param hjust,vjust position adjustment for the label of the bar
 #' @param ... further parameters are ignored
-#' @param start 
-#' @param end 
+#' @param start start of the bar
+#' @param end end of the bar
 #' 
 #' @export
 #'

@@ -149,10 +149,19 @@ annotate_df<-function(p, colors=c("red", "orange", "blue"), style=geom_topbars.d
 }
 
 
-
-
-# similar to annotate_applications, but using geom_topbars, per component of valve_content
-# this assumes that the components of a valve-content are separated by " + ", like "GABA 10mM + His"
+#' Annotate valves
+#'
+#' similar to annotate_applications, but using geom_topbars, per component of valve_content
+#' this assumes that the components of a valve-content are separated by " + ", like "GABA 10mM + His"
+#' 
+#' may be deprecated soon. 
+#'
+#' @param p 
+#'
+#' @param line 
+#' @param colors 
+#' @param style 
+#'
 #' @export
 annotate_valves<-function(p, line=4, colors=c("red", "orange", "blue"), style=geom_topbars.defaultstyle){
   
@@ -201,13 +210,14 @@ logs_show<- function(Plate,
 
 
 
-# get logs for each recording.
-# this is very useful for automatic plotting. 
-# this only works if 
-#     - every oocyte starts with             "Recording oocyte in"
-#     - every recording starts with          "*-"
-#     - for later extraction of application information, each valve opening should
-#        print a logline starting with  ">>>" (see logs_add_app family of functions)
+#' get logs for each recording.
+#' 
+#' this is very useful for automatic plotting. 
+#' this only works if 
+#'     - every oocyte starts with             "Recording oocyte in"
+#'     - every recording starts with          "*-"
+#'     - for later extraction of application information, each valve opening should
+#'        print a logline starting with  ">>>" (see logs_add_app family of functions)
 #' @export
 logs_per_sweep<-function(
     plate , #filename without the ending
@@ -289,9 +299,11 @@ logs_per_sweep<-function(
 
 
 
-## ----show applications
-# function that gets runs, oos, and the nth application (of all recordings)
-# high level function useful for getting an overview
+#' show applications derived from logentries
+#'  
+#' function that gets runs, oos, and the nth application (of all recordings)
+#' high level function useful for getting an overview
+#' 
 #' @export
 logs_add_app.n<-function(log,n, name=paste0("app", n)){
  log %>% group_by(run, OO, swp) %>% 
