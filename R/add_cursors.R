@@ -93,7 +93,11 @@ add_cursor_bar<-function(ephysdata, name, start, end,  ...){
   add_cursor(ephysdata, name=name, start=start, end=end, cfun= bar_,  ...)
 }
 
-
+#' point cursor, fast version
+#' 
+#' (not tested if in ephys4 (this package), it is still faster then the standard add_cursor_point). 
+#' included here for packwards compatibility and maybe later performance benchmarking. 
+#' 
 #' @inheritParams add_cursor
 #' point cursor, fast version (expects a stream called 'data' and does no filtering on its own, fast because no rowwise)
 #' @export
