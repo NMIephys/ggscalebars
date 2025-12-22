@@ -3,6 +3,20 @@ title: "TODO"
 output: html_notebook
 ---
 
+# bars & topbars
+- which is better, and why? 
+- do we need both and why ? 
+   ==> bars where never really used
+   ==> topbars have no tests here
+   
+## topbars vs topbars_
+- do they plot the same? 
+- can we delete topbars? 
+
+## ggmixedunits:  
+   bars still depend on them - rewrite using gg335 like in topbars
+
+
 # DRINGED!  
 
 [x]( ***test on all platforms*** ) swp ist zwar gut dass es ein faktor ist, 
