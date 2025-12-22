@@ -4,7 +4,6 @@
 #' this function takes a data.frame that should at least contain the columns id, swp, x,y, 
 #' where id represents an "experiment", swp represents a "sweep", and x,y the trace data. 
 #' From this, an ephysdata object is build which can be fed into the ephys4 toolchain.
-#' If the data.frame is large and comes originally from a file, please consider using \link{make_ephysdata2}
 #' @param tidy_ephysdata 
 #'
 #' @return ephys-data
