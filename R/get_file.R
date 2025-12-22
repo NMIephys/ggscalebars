@@ -31,7 +31,12 @@ get_file <- function(filename){
     "your current search path is {getOption('data_files_path')}",
     "Type '? set_file_searchfolder' to get help"))
   
-  if(NROW(found_paths)<1) stop(paste("could not find file. Type '? set_file_searchfolder' to get help", filename))
+  if(NROW(found_paths)<1) cli::cli_abort(c(
+    "could not find file: {filename} ",
+    "you are currently in {getwd()}",
+    "your current search path is {getOption('data_files_path')}",
+    "Type '? set_file_searchfolder' to get help"
+     ))
   found_paths %>%  head(1) %>% pull(path)
 }
 
