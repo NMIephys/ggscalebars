@@ -43,36 +43,5 @@ make_ephysdata<-function(tidy_ephysdata){
 
 
 
-#' make "ephysdata" object from filename and a file_reader function.
-#' 
-#' this function just takes the file name and the reader function. 
-#' From this, an ephysdata object is build which can be fed into the ephys4 toolchain.
-#' It will not contain the raw data in it, but the file pointer and the function to read it. 
-#'
-#' @param filepath 
-#' @param file_reader a function that is able to read the file and returns a data frame with 2 columns named x and y.
-#' @param unit optional unit for the y values (for ggsweeps)
-#' @param id 
-#' @param swp 
-#' @param xoffset 
-#' @param yoffset 
-#' @param swp.start 
-#'
-#' @return ephys-data
-#' @export
-#' @family ephys-data-readers
-make_ephysdata2<-function(filepath, file_reader, unit="", id=basename(filepath), swp=1, xoffset=0, yoffset=0, swp.start=0){
-  
-    tibble(id=id, 
-           swp=as.factor(swp), 
-           xoffset=xoffset, 
-           yoffset=yoffset, 
-           swp.start=swp.start, 
-           ptrs=list(list(
-              file       = filepath, 
-              file_reader= file_reader,
-              unit=unit
-             ))
-           ) 
-}
+
 
