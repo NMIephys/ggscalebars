@@ -10,12 +10,12 @@
 ^pkgdown$
 ^Meta$
 ^README\.Rmd$
-^TODO$
+^tmp$
+^dev$
 
 build.R
 _pkgdown.yml
 
 
-(^|/)cache_patchmaster($|/)
-(^|/)cache_robotraces($|/)
+
 (^|/)_snaps($|/)
