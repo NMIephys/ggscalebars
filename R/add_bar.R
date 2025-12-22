@@ -15,10 +15,12 @@
 #' @param border border color of the bar
 #' @param label.col label color of the bar 
 #' @param label.size label size of the bar  
-#' @param hjust,vjust position adjustment for the label of the bar
 #' @param ... further parameters are ignored
 #' @param start start of the bar
 #' @param end end of the bar
+#' @param bar.mapping (deprecated)
+#' @param hjust hjust
+#' @param vjust vjust
 #' 
 #' @export
 #'

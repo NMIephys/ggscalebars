@@ -88,7 +88,7 @@ add_cursor<- function(ephysdata, name, start, end, cfun, stream,  condition=TRUE
 
 
 #' add a bar
-#' 
+#' @inheritParams add_cursor 
 #' @export
 add_cursor_bar<-function(ephysdata, name, start, end,  ...){
   add_cursor(ephysdata, name=name, start=start, end=end, cfun= bar_,  ...)
@@ -101,28 +101,30 @@ add_cursor_bar<-function(ephysdata, name, start, end,  ...){
 #' 
 #' point cursor, fast version (expects a stream called 'data' and does no filtering on its own, fast because no rowwise)
 #' @inheritParams add_cursor
+#' @param fun function that defines the cursor
 #' @export
-add_cursor_point_fast<-function(df, name, start, end, fun, annot=NA){
+add_cursor_point_fast<-function(ephysdata, name, start, end, fun, annot=NA){
   # this code will work for all cases were our fun just returns "y". 
   # we still need to find a solution were for funs were we calculate more than this, like AP, and models. 
   
       # f=function(x)data.frame(model=x[1], st=0, en=3);mtcars %>% group_by(cyl) %>% summarise(f(cyl))
   
-  # we also need to check again if the left_join(df,df %>%...) pattern is applied correctly here (see performance tests.Rmd for rationale and example of the pattern.)
+  # we also need to check again if the left_join(ephysdata,ephysdata %>%...) pattern is applied correctly here (see performance tests.Rmd for rationale and example of the pattern.)
   name=paste0(name, ".csr")
-  left_join(df, df %>% tidyr::unnest(data) %>% group_by(id) %>%  
+  left_join(ephysdata, ephysdata %>% tidyr::unnest(data) %>% group_by(id) %>%  
               summarise(y_=fun(y[x %>% between(start,end)]), x=x[x %>% between(start,end)][which.min(abs(y[x %>% between(start,end)]-y_))[1]], st=start, en=end), by="id") %>% 
     rename(y=y_) %>%
-    tidyr::nest({{name}}:=c(x,y,st,en))-> df
+    tidyr::nest({{name}}:=c(x,y,st,en))-> ephysdata
   
-  if(!missing(annot))   attr(df[[name]], "annot") <- annot
-  df
+  if(!missing(annot))   attr(ephysdata[[name]], "annot") <- annot
+  ephysdata
 }
 
 
 #' Find single point in cursor region
 #' 
 #' @inheritParams add_cursor
+#' @param fun function that defines the cursor
 #' @export
 #' @examples 
 #' ephysdata::examplefile("OO_GABA") %>% read_ROBOO() %>% head(1) %>%   
@@ -143,7 +145,7 @@ add_cursor_point<-function(ephysdata, name, start, end,  fun, stream, condition=
 #' @param long add_cursor_points: output cursor results in long format (not compatible with ggsweeps() currently). 
 #' @param direction add_cursor_points: apply fun to segments above or below threshold 
 #' @inheritParams add_cursor
-
+#' @param fun function that defines the cursor
 #' @export
 #' @examples 
 #' read_PATCHMASTER(examplefile("cardiopatch/21-07-Cardio.dat"), exp=23, ser=3,  trc="Vmon") %>% 
@@ -182,6 +184,7 @@ add_cursor_points<-function(ephysdata, name, start=0, end=NA,  fun, long=FALSE, 
 #' The typical use case is to find  the baseline level of a measurement. 
 #' 
 #' @inheritParams add_cursor
+#' @param fun function that defines the cursor
 #' @export
 #' @examples 
 #' ephysdata::examplefile("OO_GABA") %>% read_ROBOO() %>% head(1) %>%   
@@ -202,6 +205,7 @@ add_cursor_level<-function(ephysdata, name, start, end,  fun, ...){
 #' @seealso [add_cursor], [add_cursor_expfit]
 #' @inheritParams add_cursor
 #' @param x0 location parameter that shifts the curve along the x-axis and defines the reference point where the model is anchored. 
+#' @param model_fun function that defines the model that the cursor evaluates
 #' @examples 
 #' read_PATCHMASTER(ephysdata::examplefile("NaV"), ser=2) %>% tail(1) %>% 
 #'  add_cursor_model("fit_from_c1", 0.011, 0.019, x0=0.011, model_fun_exp,  st2=0.01, en2=0.03) %>% 
