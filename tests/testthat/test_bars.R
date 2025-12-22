@@ -1,5 +1,5 @@
 test_that("bars are working with NSE (label, start, end, fill)", {
-  oo_export<-examplefile("roboocyte/17-05-23.NR1_2A.P2.G1.dat")
+  oo_export<-ephysdata_examplefile("roboocyte/17-05-23.NR1_2A.P2.G1.dat")
   read_Roboocyte_exported_oocyte_dat(oo_export) %>% 
     add_cursor_point("peak", 40, 60, min) -> TMP
   

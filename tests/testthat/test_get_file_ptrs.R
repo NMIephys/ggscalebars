@@ -43,7 +43,4 @@ test_that("ptrs work from subdirs", {
 })
 
 
-ephysdata<-read_PATCHMASTER(ephysdata::examplefile("NaV"))
-ephysdata[1,"ptrs"]$ptrs[[1]]$file
-fhkhf
 

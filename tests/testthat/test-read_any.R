@@ -13,7 +13,7 @@ x=(1:100)/20
 y=sin(x)
 any_ <-  make_ephysdata(data.frame(id="test", swp=1, x=x, y=y))
 
-oo_export<-examplefile("roboocyte/17-05-23.NR1_2A.P2.G1.dat")
+oo_export<-ephysdata_examplefile("roboocyte/17-05-23.NR1_2A.P2.G1.dat")
 robo2 <- read_Roboocyte_exported_oocyte_dat(oo_export)
 
 # several types of plots require to group by swp, so this should always be present. 
