@@ -56,7 +56,7 @@ auto_bars <- function(df, space=.01, height=.05, topspace=space, show.legend=FAL
       aes(xmin=st, xmax=en, 
           ymax=ymax,
           ymin=ymin,
-          fill=fill, color=border
+          fill=I(fill), color=I(border)
       ), 
       show.legend=show.legend, 
       data= df %>% get_xBars( space=space, height = height, topspace=topspace), inherit.aes = FALSE 

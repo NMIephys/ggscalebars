@@ -36,10 +36,12 @@
 <circle cx='234.68' cy='274.83' r='3.91' style='stroke-width: 1.42; stroke: #0000FF;' />
 <circle cx='242.28' cy='266.70' r='3.91' style='stroke-width: 1.42; stroke: #0000FF;' />
 <circle cx='251.39' cy='310.05' r='3.91' style='stroke-width: 1.42; stroke: #0000FF;' />
-<rect x='228.61' y='28.01' width='303.74' height='26.12' style='stroke-width: 0.75; stroke: #BEBEBE; fill: #BEBEBE;' />
-<rect x='228.61' y='28.01' width='303.74' height='26.12' style='stroke-width: 0.75; stroke: #BEBEBE; fill: #BEBEBE;' />
-<rect x='228.61' y='28.01' width='303.74' height='26.12' style='stroke-width: 0.75; stroke: #BEBEBE; fill: #BEBEBE;' />
-<text x='380.48' y='41.89' text-anchor='middle' style='font-size: 10.00px; font-family: sans;' textLength='19.46px' lengthAdjust='spacingAndGlyphs'>barx</text>
+<rect x='228.61' y='28.01' width='303.74' height='26.12' style='stroke-width: 1.07; stroke: #BEBEBE; stroke-linecap: butt; stroke-linejoin: miter; fill: #BEBEBE;' />
+<rect x='228.61' y='28.01' width='303.74' height='26.12' style='stroke-width: 1.07; stroke: #BEBEBE; stroke-linecap: butt; stroke-linejoin: miter; fill: #BEBEBE;' />
+<rect x='228.61' y='28.01' width='303.74' height='26.12' style='stroke-width: 1.07; stroke: #BEBEBE; stroke-linecap: butt; stroke-linejoin: miter; fill: #BEBEBE;' />
+<text x='380.48' y='42.25' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='21.48px' lengthAdjust='spacingAndGlyphs'>barx</text>
+<text x='380.48' y='42.25' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='21.48px' lengthAdjust='spacingAndGlyphs'>barx</text>
+<text x='380.48' y='42.25' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='21.48px' lengthAdjust='spacingAndGlyphs'>barx</text>
 <rect x='47.96' y='22.78' width='666.56' height='522.33' style='stroke-width: 1.07; stroke: #333333;' />
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>

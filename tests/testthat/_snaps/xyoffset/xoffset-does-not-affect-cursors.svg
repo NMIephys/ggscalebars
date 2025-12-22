@@ -57,12 +57,12 @@
 <circle cx='195.77' cy='521.37' r='3.91' style='stroke-width: 1.42; stroke: #0000FF;' />
 <circle cx='389.54' cy='483.95' r='3.91' style='stroke-width: 1.42; stroke: #0000FF;' />
 <circle cx='581.05' cy='446.88' r='3.91' style='stroke-width: 1.42; stroke: #0000FF;' />
-<rect x='123.14' y='28.01' width='81.15' height='26.12' style='stroke-width: 0.75; stroke: #BEBEBE; fill: #BEBEBE;' />
-<rect x='328.01' y='28.01' width='81.15' height='26.12' style='stroke-width: 0.75; stroke: #BEBEBE; fill: #BEBEBE;' />
-<rect x='532.89' y='28.01' width='81.15' height='26.12' style='stroke-width: 0.75; stroke: #BEBEBE; fill: #BEBEBE;' />
-<text x='163.71' y='41.89' text-anchor='middle' style='font-size: 10.00px; font-family: sans;' textLength='21.69px' lengthAdjust='spacingAndGlyphs'>peak</text>
-<text x='368.59' y='41.89' text-anchor='middle' style='font-size: 10.00px; font-family: sans;' textLength='21.69px' lengthAdjust='spacingAndGlyphs'>peak</text>
-<text x='573.47' y='41.89' text-anchor='middle' style='font-size: 10.00px; font-family: sans;' textLength='21.69px' lengthAdjust='spacingAndGlyphs'>peak</text>
+<rect x='123.14' y='28.01' width='81.15' height='26.12' style='stroke-width: 1.07; stroke: #BEBEBE; stroke-linecap: butt; stroke-linejoin: miter; fill: #BEBEBE;' />
+<rect x='328.01' y='28.01' width='81.15' height='26.12' style='stroke-width: 1.07; stroke: #BEBEBE; stroke-linecap: butt; stroke-linejoin: miter; fill: #BEBEBE;' />
+<rect x='532.89' y='28.01' width='81.15' height='26.12' style='stroke-width: 1.07; stroke: #BEBEBE; stroke-linecap: butt; stroke-linejoin: miter; fill: #BEBEBE;' />
+<text x='163.71' y='42.25' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='23.95px' lengthAdjust='spacingAndGlyphs'>peak</text>
+<text x='368.59' y='42.25' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='23.95px' lengthAdjust='spacingAndGlyphs'>peak</text>
+<text x='573.47' y='42.25' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='23.95px' lengthAdjust='spacingAndGlyphs'>peak</text>
 <rect x='40.62' y='22.78' width='673.90' height='522.33' style='stroke-width: 1.07; stroke: #333333;' />
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>

@@ -11,7 +11,7 @@
 #' @param label.sweeps a numeric vector specifying for which sweeps the label should be drawn, or a string "all", "first", or "last"
 #' @param label optionally specify label if different from name
 #' @param label.x x-coordinate for the label
-#' @param fill fill color of the bar. use e.g. I("red") to set color directly, without mapping via a color scale
+#' @param fill fill color of the bar.
 #' @param border border color of the bar
 #' @param label.col label color of the bar 
 #' @param label.size label size of the bar  
@@ -69,6 +69,8 @@ add_bar <-
     }else{
       line=0
     }
+    
+    
     
     # helper function that safely tests if a symbol exists and is NA. 
     # returns FALSE if the symbol either is assigned to a variable that is not NA, or essems to not exist. 
