@@ -9,18 +9,15 @@ test_that("ptrs work from subdirs", {
     file.copy(ephysdata::examplefile("NaV"), to=".")
     ephysdata<-read_PATCHMASTER("VG_Blocker.dat")
     
-    # if we include "./" in the searchfolder, we should be able to get the traces: 
-    set_file_searchfolder(list("./", "../", "../../"))
+    # now, obviously, we should be able to get the traces: 
     expect_s3_class({
-      suppressWarnings( ephysdata %>% head(1) %>% get_trace() ) 
+        ephysdata %>% head(1) %>% get_trace() 
     }, "data.frame")
     
-    # create and cd into a subdir
+    # but if we move into a subdir, we expect an error
     dir.create("subdir", showWarnings = F)
     setwd("./subdir")
     
-    # now, if we unset the searchfolder, we expext an error
-    set_file_searchfolder(list())
     expect_error(
       ephysdata %>% head(1) %>% get_trace()  
     )
@@ -46,6 +43,7 @@ test_that("ptrs work from subdirs", {
 })
 
 
-
-
+ephysdata<-read_PATCHMASTER(ephysdata::examplefile("NaV"))
+ephysdata[1,"ptrs"]$ptrs[[1]]$file
+fhkhf
 
