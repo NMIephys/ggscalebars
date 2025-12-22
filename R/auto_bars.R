@@ -13,9 +13,9 @@ get_xBars <- function(df, space=.035, height=.03, topspace=space){
     dplyr::mutate( bar=fill %>% stringr::str_remove(".bar"),
             #line=as.numeric(factor(name))-1, 
             label=label, 
-            ymax=    as.character(-1*{{topspace}} + 1- {{height}}    - (line-1)*({{height}}+{{space}}) - fixed.y), 
-            ymin=    as.character(-1*{{topspace}} + 1            - (line-1)*({{height}}+{{space}}) - fixed.y), 
-            y_label= as.character(-1*{{topspace}} + 1- {{height}}*.4 - (line-1)*({{height}}+{{space}}) - fixed.y),
+            ymax=    I(-1*{{topspace}} + 1- {{height}}    - (line-1)*({{height}}+{{space}}) - fixed.y), 
+            ymin=    I(-1*{{topspace}} + 1            - (line-1)*({{height}}+{{space}}) - fixed.y), 
+            y_label= I(-1*{{topspace}} + 1- {{height}}*.4 - (line-1)*({{height}}+{{space}}) - fixed.y),
     ) %>% dplyr::group_by(name) %>%
 
     # mutate(      sweeps= ifelse(      sweeps== "first",  list(as.numeric(   (swp)[1])),list(      sweeps)))  %>%
@@ -50,21 +50,20 @@ get_xBars <- function(df, space=.035, height=.03, topspace=space){
 auto_bars <- function(df, space=.01, height=.05, topspace=space, show.legend=FALSE, colors="grey85"){
   
   list(
-    geom_rect..(#..version
       
-      aes(xmin.=st, xmax.=en, 
-                   ymax.=ymax,
-                   ymin.=ymin,
-                   barborder=border,
-                   fill=bars, #aes_fill, #fill, #rect.. uses fill instead of barfill
-                   fill2=fill
-                   ), 
-                   show.legend=show.legend,
-               data= df %>% get_xBars( space=space, height = height, topspace=topspace) 
+    ggplot2::geom_rect(
+      
+      aes(xmin=st, xmax=en, 
+          ymax=ymax,
+          ymin=ymin,
+          fill=fill, color=border
+      ), 
+      show.legend=show.legend, 
+      data= df %>% get_xBars( space=space, height = height, topspace=topspace), inherit.aes = FALSE 
     ) ,  
-    geom_text.(aes(
-                   x.= unlist(label.x), 
-                   y.= y_label,
+    geom_text(aes(
+                   x= unlist(label.x), 
+                   y= y_label,
                    label.col =label.col, 
                    label=label, 
                    label.size=label.size,

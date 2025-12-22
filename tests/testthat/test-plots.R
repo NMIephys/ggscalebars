@@ -92,7 +92,7 @@ expect_doppelganger("auto bars",{
   read_ROBOO(ephysdata::examplefile("OO_GABA")) %>%  head(3) %>%   
     add_bar(name = "GABA",                        start=35,end=95, line=2, sweeps=list(0,1,2)) %>%
     add_bar(name = "EFX",                         start=00,end=95, line=1, sweeps=1          ) %>%
-    add_bar(name = "EFX2",  label="", fill="orange", start=0, end=20, line=1, sweeps=list(0,2  )) %>%
+    add_bar(name = "EFX2",  label="", fill=I("orange"), start=0, end=20, line=1, sweeps=list(0,2  )) %>%
     add_cursor_point("peak", 75,95,min) %>%
     
     ggsweeps + 
@@ -106,9 +106,9 @@ expect_doppelganger("auto bars",{
 
 expect_doppelganger("auto bars 2",{
   read_ROBOO(ephysdata::examplefile("OO_GABA")) %>%  head(3) %>%   
-    add_bar(name = "GABA",  label="", fill="orange",start=35,end=95, line=2, sweeps=list(0,1,2)) %>%
-    add_bar(name = "EFX",   label="", fill="grey", start=00,end=95, line=1, sweeps=1          ) %>%
-    add_bar(name = "EFX2",  label="", fill="skyblue", start=0, end=20, line=1, sweeps=list(0,2  )) %>%
+    add_bar(name = "GABA",  label="", fill=I("orange"),start=35,end=95, line=2, sweeps=list(0,1,2)) %>%
+    add_bar(name = "EFX",   label="", fill=I("grey"), start=00,end=95, line=1, sweeps=1          ) %>%
+    add_bar(name = "EFX2",  label="", fill=I("skyblue"), start=0, end=20, line=1, sweeps=list(0,2  )) %>%
     add_cursor_point("peak", 75,95,min) %>%
     
     ggsweeps + 

@@ -11,7 +11,7 @@
 #' @param label.sweeps a numeric vector specifying for which sweeps the label should be drawn, or a string "all", "first", or "last"
 #' @param label optionally specify label if different from name
 #' @param label.x x-coordinate for the label
-#' @param fill fill color of the bar
+#' @param fill fill color of the bar. use e.g. I("red") to set color directly, without mapping via a color scale
 #' @param border border color of the bar
 #' @param label.col label color of the bar 
 #' @param label.size label size of the bar  
@@ -29,7 +29,7 @@
 #' read_ROBOO(ephysdata::examplefile("OO_GABA")) %>%  head(3) %>%   
 #' add_bar(name = "GABA",                        start=35,end=95, line=2, sweeps=list(0,1,2)) %>%
 #'   add_bar(name = "EFX",                         start=00,end=95, line=1, sweeps=1          ) %>%
-#'   add_bar(name = "EFX2",  label="", fill="orange", start=0, end=20, line=1, sweeps=list(0,2  )) %>%
+#'   add_bar(name = "EFX2",  label="", fill=I("orange"), start=0, end=20, line=1, sweeps=list(0,2  )) %>%
 #'   add_cursor_point("peak", 75,95,min) %>%
 #'   ggsweeps + 
 #'   facet_wrap(~swp)  + 
