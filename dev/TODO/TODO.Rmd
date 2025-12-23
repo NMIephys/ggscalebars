@@ -3,22 +3,17 @@ title: "TODO"
 output: html_notebook
 ---
 
+# R CMD CHECK WARNINGS:
+
+- document cursors
+- do fixmes
+
 # bars & topbars
 - which is better, and why? 
 - do we need both and why ? 
    ==> bars where never really used
    ==> topbars have no real usecase and tests in this package 
          -- real usecases are outside in projects. 
-   
-## topbars vs topbars_
-- do they plot the same? 
-- can we delete topbars? 
-
-## ggmixedunits:  
-   bars still depend on them - rewrite using gg335 like in topbars
-
-
-
    
 
 
