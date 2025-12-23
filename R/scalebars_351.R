@@ -7,6 +7,7 @@
 #' @inheritParams theme_scalebars 
 #' @inheritParams coord_scalebars
 #'
+#'
 #' @export
 #'
 #' @examples
@@ -39,7 +40,6 @@ scalebars<-function(
   left = "bar", 
   bottom = "bar", 
   right = waiver(), 
-  gap = 0.01,
   size=12,
   lwd=1.2,
   xlab.pos=c("bottom", "top"),
@@ -80,8 +80,7 @@ scalebars<-function(
          top    =top    , 
          left   =left   ,
          bottom =bottom ,
-         right  =right  , 
-         gap    =gap 
+         right  =right  
        )
     )
   
