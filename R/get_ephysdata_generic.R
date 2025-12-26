@@ -35,7 +35,7 @@ get.ephysdata_fast.ptrs_robo_from_exported_data<- function(ptr, rerun, ...) {
 }
 
 # helper functions used by read.xxx function to set the class
-add_class<-function(x,newclass){class(x)<-c(class(x),newclass);x}
+add_class<-function(x,newclass){class(x)<-c(newclass,class(x));x}
 add_ptrs_class <- function(., ptrs_class){ mutate(., ptrs = purrr::map(ptrs, add_class, ptrs_class))}
 
 

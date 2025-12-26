@@ -31,19 +31,19 @@ test_that("check-ephysdata succeeds",{
 test_that("use list, not tibble, for storing ptrs", {
   
   expect_equal(
-    heka$ptrs[[1]] %>% class, c("list", "ptrs_heka")
+    heka$ptrs[[1]] %>% class, c( "ptrs_heka", "list")
   )
  
   expect_equal(
-    robo.r2d$ptrs[[1]] %>% class , c("list", "ptrs_robo")
+    robo.r2d$ptrs[[1]] %>% class , c( "ptrs_robo", "list")
   )
   
   expect_equal(
-    robo$ptrs[[1]] %>% class , c("list", "ptrs_robo_from_exported_data")
+    robo$ptrs[[1]] %>% class , c( "ptrs_robo_from_exported_data", "list")
   )
 
   expect_equal(
-    hama$ptrs[[1]] %>% class ,  c("list", "ptrs_HAMA")
+    hama$ptrs[[1]] %>% class ,  c( "ptrs_HAMA", "list")
   )
 })
 
