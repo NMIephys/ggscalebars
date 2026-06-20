@@ -14,8 +14,10 @@ package provides scalebars for ggplot.
 ### Package Installation
 
 ``` r
-remotes::install_github("NMIephys/ggscalebars")
+remotes::install_github("tdanker/ggscalebars")
 ```
+
+### Example usage
 
 ``` r
 x=seq(-10,10, length.out=100)
