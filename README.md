@@ -1,4 +1,4 @@
-ephys4
+ggscalebars
 ================
 
 # ephys4 <img src="man/figures/logo.png" align="right" />
@@ -12,8 +12,8 @@ stable](https://img.shields.io/badge//lifecycle-stable-green.svg)](https://lifec
 
 <!-- badges: end -->
 
-The ephys4 package unifies reading HEKA, Roboocyte, and Hamamatsu files
-and performs analyses on them.
+Scalebars are commonly used as alternatives to classical axes. This
+package provides scalebars for ggplot.
 
 ### Package Installation
 

@@ -1,5 +1,5 @@
 ---
-title: "ephys4"
+title: "ggscalebars"
 output: github_document
 ---
 # ephys4 <img src="man/figures/logo.png" align="right" />
@@ -10,7 +10,8 @@ output: github_document
 
 <!-- badges: end -->
 
-The ephys4 package unifies reading HEKA, Roboocyte, and Hamamatsu files and performs analyses on them.  
+Scalebars are commonly used as alternatives to classical axes. 
+   This package provides scalebars for ggplot.  
 
 ```{r setup, message=FALSE, include=FALSE}
 lifecycle::badge("stable")
