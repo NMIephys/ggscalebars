@@ -1,10 +1,6 @@
 ggscalebars
 ================
 
-# ephys4 <img src="man/figures/logo.png" align="right" />
-
-## Read, plot and analyse ephys data
-
 <!-- badges: start -->
 
 [![Lifecycle:
